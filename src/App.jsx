@@ -29,22 +29,25 @@ function App() {
   return (
 
     <div>
-      {current === questions.length ? <p>Quiz Over! Your Score is: {score}</p> : null}
-      <button onclick={() => {
-        setCurrent(0);
-        setScore(0);
-      }}>Restart Quiz</button>
-      <>
-        <h1>QuizHappens</h1>
-        <QuestionCard
-          question={questions[current].question}
-          options={questions[current].options}
-          answer={questions[current].answer}
-          onNext={handleNext}
-          score={score}
-          setScore={setScore} />
-      </>
-      }
+      {current === questions.length ?
+        <>
+          <p>Quiz Over! Your Score is: {score}</p>
+          <button onClick={() => {
+            setCurrent(0);
+            setScore(0);
+          }}>Restart Quiz</button>
+        </> :
+        <>
+          <h1>QuizHappens</h1>
+          <QuestionCard
+            question={questions[current].question}
+            options={questions[current].options}
+            answer={questions[current].answer}
+            onNext={handleNext}
+            score={score}
+            setScore={setScore}
+          />
+        </>}
     </div >
   )
 }

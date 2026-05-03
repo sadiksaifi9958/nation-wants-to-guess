@@ -17,10 +17,15 @@ function QuestionCard({ question, options, answer, onNext, score, setScore }) {
                         }}
                         style={{ backgroundColor: selected ? (option === answer ? 'green' : option === selected ? 'red' : '') : '' }}
                         disabled={selected !== null}
-                    >{option}</button>))}
+                    >{option}</button>))
+                }
             </ul>
-            {selected && <p>You Select: {selected}</p>}
-            <button onClick={() => { onNext(); setSelected(null) }}>Next Question</button>
+            {selected && selected === answer ? <p>That's correct, You won</p> : selected && selected !== answer ? <p>That's a wrong answer</p> : null}
+            
+            <button
+                onClick={() => { onNext(); setSelected(null) }}
+                disabled={selected === null}
+            >Next Question</button>
         </div >
     )
 }
