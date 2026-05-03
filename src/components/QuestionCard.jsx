@@ -1,7 +1,4 @@
-import { useState } from 'react'
-
-function QuestionCard({ question, options, answer, onNext, score, setScore }) {
-    const [selected, setSelected] = useState(null);
+function QuestionCard({ question, options, answer, onCorrect, onWrong, selected, setSelected }) {
     return (
         <div>
             <h2>{question}</h2>
@@ -12,7 +9,6 @@ function QuestionCard({ question, options, answer, onNext, score, setScore }) {
                         onClick={() => {
                             if (selected === null) {
                                 setSelected(option);
-                                option === answer ? setScore(score + 1) : null
                             }
                         }}
                         style={{ backgroundColor: selected ? (option === answer ? 'green' : option === selected ? 'red' : '') : '' }}
@@ -23,7 +19,7 @@ function QuestionCard({ question, options, answer, onNext, score, setScore }) {
             {selected && selected === answer ? <p>That's correct, You won</p> : selected && selected !== answer ? <p>That's a wrong answer</p> : null}
             
             <button
-                onClick={() => { onNext(); setSelected(null) }}
+                onClick={() => { console.log(`selected: ${selected}, answer: ${answer}`); selected === answer ? onCorrect(): onWrong()}}
                 disabled={selected === null}
             >Next Question</button>
         </div >
