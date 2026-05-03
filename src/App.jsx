@@ -1,49 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import './App.css'
 import QuestionCard from './components/QuestionCard'
 
-const questions = [
-  {
-    question: "Which language styles a webpage?",
-    options: ["Python", "CSS", "Java", "C++"],
-    answer: "CSS"
-  },
-  {
-    question: "What does JS Stand for?",
-    options: ["Just Style", "JavaScript", "Java Stream", "Joint Syntax"],
-    answer: "JavaScript"
-  }
-]
+
 
 function App() {
-  const [current, setCurrent] = useState(0)
+  const [question, setQuestion] = useState(null)
+
+  async function fetchQuestion() {
+    const response = await fetch('https://nwtg-api.onrender.com/questions/random');
+    const data = await response.json()
+    setQuestion(data)
+  }
+
+  useEffect(() => {
+    fetchQuestion()
+  },[])
 
   const [score, setScore] = useState(0)
-
-
-
-  function handleNext() {
-    setCurrent(current + 1)
-  }
 
   return (
 
     <div>
-      {current === questions.length ?
+      {!question ?
         <>
-          <p>Quiz Over! Your Score is: {score}</p>
+        <p>Loading...</p>
+          {/* <p>Quiz Over! Your Score is: {score}</p>
           <button onClick={() => {
             setCurrent(0);
             setScore(0);
-          }}>Restart Quiz</button>
+          }}>Restart Quiz</button> */}
         </> :
         <>
           <h1>QuizHappens</h1>
           <QuestionCard
-            question={questions[current].question}
-            options={questions[current].options}
-            answer={questions[current].answer}
-            onNext={handleNext}
+            question={question.question}
+            options={question.options}
+            answer={question.answer}
+            onNext={fetchQuestion}
             score={score}
             setScore={setScore}
           />
