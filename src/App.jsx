@@ -46,14 +46,15 @@ function App() {
                 setScore(0);
                 fetchQuestion()
                 setQuizover(false)
-                setSelected(null)}}
+                setSelected(null)
+              }}
             >Restart Quiz</button>
           </>
           :
           !question ? <p className="text-[#aabbff] text-md text-center">Loading...</p>
             :
             <>
-              <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-xs font-bold tracking--widest w-fit">Score: {score}</p>
+              <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest w-fit">Score: {score}</p>
               <QuestionCard
                 question={question.question}
                 options={question.options}
