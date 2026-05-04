@@ -9,7 +9,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
         'bg-[#001a1a] text-[#44ffee] border-[#008888]',
     ]
 
-    const optionLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    const optionLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 
     return (
         <div className="flex flex-col">
@@ -24,11 +24,11 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                             }
                         }}
                         disabled={selected !== null}
-                        className={`w-full flex gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}
+                        className={`w-full flex text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}
                     >
-                        <span className={`rounded-full px-2 py-0.5 text-xs font-bold border ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
+                        <span className={`rounded-full px-2 w-6 h-6 text-xs font-bold border min-height-16 flex flex-shrink-0 items-center justify-center ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
                         {option}
-                    </button>))
+                    </button>)) 
                 }
             </ul>
             {selected && selected === answer ? <p className="text-center bg-[#001a00] text-[#44ff88] font-semibold py-2 px-4 rounded-lg mb-2">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#1a0000] text-[#ff6666] font-semibold py-2 px-4 rounded-lg mb-2">That's a wrong answer.</p> : null}
