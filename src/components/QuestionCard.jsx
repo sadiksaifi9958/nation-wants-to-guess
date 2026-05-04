@@ -26,7 +26,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                         disabled={selected !== null}
                         className={`w-full flex gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}
                     >
-                        <span className="text-white bg-[#080830] border border-[#1e3aaa] rounded-full px-2 py-0.5 text-xs font-bold">{optionLabels[index]}</span>
+                        <span className={`rounded-full px-2 py-0.5 text-xs font-bold border ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
                         {option}
                     </button>))
                 }
