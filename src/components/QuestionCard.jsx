@@ -31,7 +31,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                     </button>))
                 }
             </ul>
-            {selected && selected === answer ? <p className="bg-[#008866] text-white border-[#008866] text-sm font-semibold leading-relaxed border rounded-lg p-2 mb-3 text-center tracking-widest">That's correct, You won!</p> : selected && selected !== answer ? <p className="bg-[#cc2200] text-white border-[#cc2200] text-center text-sm font-semibold leading-relaxed border rounded-lg p-2 mb-3 tracking-widest">That's a wrong answer.</p> : null}
+            {selected && selected === answer ? <p className="text-center bg-[#001a00] text-[#44ff88] font-semibold py-2 px-4 rounded-lg mb-2">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#1a0000] text-[#ff6666] font-semibold py-2 px-4 rounded-lg mb-2">That's a wrong answer.</p> : null}
 
             <button
                 onClick={() => { selected === answer ? onCorrect() : onWrong() }}

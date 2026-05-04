@@ -39,9 +39,9 @@ function App() {
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4">
         {quizover ?
           <>
-            <p className="text-[#0d1040] border border-[#0d1040] bg-[#aabbff] text-xl font-bold text-center tracking-widest">Quiz Over! Your Score is: {score}</p>
+            <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}</p>
             <button
-              className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest w-fit self-center cursor-pointer active:scale-90"
+              className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white font-bold py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90"
               onClick={() => {
                 setScore(0);
                 fetchQuestion()
