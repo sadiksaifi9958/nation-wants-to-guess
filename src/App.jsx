@@ -5,7 +5,12 @@ import QuestionCard from './components/QuestionCard'
 
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false)
   const [question, setQuestion] = useState(null)
+
+  function onStart() {
+    setGameStarted(true)
+  }
 
   async function fetchQuestion() {
     const response = await fetch('https://nwtg-api.onrender.com/questions/random');
@@ -36,35 +41,44 @@ function App() {
   return (
     <div className="min-h-screen w-full bg-[#050518]">
       <h1 className="text-white text-3xl font-bold text-center tracking-widest pt-5">Nation Wants To Guess</h1>
-      <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4">
-        {quizover ?
+      <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center">
+        {!gameStarted ?
           <>
-            <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}</p>
+            <h2 className="text-center text-white text-xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Inspired by the comedy quiz show 'Nation Wants To Guess' by comedian Gursimran Khamba, available on YouTube. All questions are based on the show.</h2>
             <button
-              className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white font-bold py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90"
-              onClick={() => {
-                setScore(0);
-                fetchQuestion()
-                setQuizover(false)
-                setSelected(null)
-              }}
-            >Restart Quiz</button>
+              className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90 text-xl"
+              onClick={onStart}
+            >Start Quiz</button>
           </>
           :
-          !question ? <p className="text-[#aabbff] text-md text-center">Loading...</p>
-            :
+          quizover ?
             <>
-              <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest w-fit">Score: {score}</p>
-              <QuestionCard
-                question={question.question}
-                options={question.options}
-                answer={question.answer}
-                onCorrect={handleCorrect}
-                onWrong={handleWrong}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </>}
+              <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}</p>
+              <button
+                className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white font-bold py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90"
+                onClick={() => {
+                  setScore(0);
+                  fetchQuestion()
+                  setQuizover(false)
+                  setSelected(null)
+                }}
+              >Restart Quiz</button>
+            </>
+            :
+            !question ? <p className="text-[#aabbff] text-md text-center">Loading...</p>
+              :
+              <>
+                <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest w-fit self-start">Score: {score}</p>
+                <QuestionCard
+                  question={question.question}
+                  options={question.options}
+                  answer={question.answer}
+                  onCorrect={handleCorrect}
+                  onWrong={handleWrong}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+              </>}
       </div >
     </div>
   )
