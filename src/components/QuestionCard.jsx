@@ -26,7 +26,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                         disabled={selected !== null}
                         className={`w-full flex items-start text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}
                     >
-                        <span className={`rounded-full px-2 w-6 h-6 text-xs font-bold border min-height-16 flex flex-shrink-0 items-center justify-center ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
+                        <span className={`rounded-full px-2 w-6 h-6 text-xs font-bold border flex flex-shrink-0 items-center justify-center ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
                         {option}
                     </button>))
                 }
