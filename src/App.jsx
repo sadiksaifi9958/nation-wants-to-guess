@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import QuestionCard from './components/QuestionCard'
 
-
-
 function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [question, setQuestion] = useState(null)
+  const [questionCount, setQuestionCount] = useState(0)
+
+  const totalQuestion = 10
 
   function onStart() {
     setGameStarted(true)
@@ -32,6 +33,7 @@ function App() {
     setScore(score + 1)
     setSelected(null)
     fetchQuestion()
+    setQuestionCount(questionCount + 1)
   }
 
   function handleWrong() {
@@ -44,7 +46,12 @@ function App() {
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center">
         {!gameStarted ?
           <>
-            <h2 className="text-center text-white text-xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Inspired by the comedy quiz show 'Nation Wants To Guess' by comedian Gursimran Khamba, available on YouTube. All questions are based on the show.</h2>
+            <h2 className="text-center text-white text-xl font-semibold p-4 mb-4">Inspired by the comedy quiz show 'Nation Wants To Guess' by comedian Gursimran Khamba, available on YouTube. All questions are based on the show.</h2>
+            <ul className="flex flex-col items-start text-white gap-3 m-4 list-disc pl-5">
+              <li className="text-md text-white">10 Questions</li>
+              <li className="text-md text-white">+1 Score on correct answer</li>
+              <li className="text-md text-white">quiz ends on wrong answer</li>
+            </ul>
             <button
               className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90 text-xl"
               onClick={onStart}
@@ -53,7 +60,9 @@ function App() {
           :
           quizover ?
             <>
-              <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}</p>
+              <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}/ {totalQuestion}</p>
+              {score <= 3 ? (<p className="text-white">Better luck next time!</p>)
+                : score <= 7 ? (<p className="text-white">Nice try!</p>) : (<p className="text-white">You are a true Nation Wants To Guess fan</p>)}
               <button
                 className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white font-bold py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90"
                 onClick={() => {
@@ -61,6 +70,7 @@ function App() {
                   fetchQuestion()
                   setQuizover(false)
                   setSelected(null)
+                  setQuestionCount(0)
                 }}
               >Restart Quiz</button>
             </>
@@ -77,10 +87,12 @@ function App() {
                   onWrong={handleWrong}
                   selected={selected}
                   setSelected={setSelected}
+                  questionNumber={questionCount}
+                  totalQuestion={totalQuestion}
                 />
               </>}
       </div >
-    </div>
+    </div >
   )
 }
 
