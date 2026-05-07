@@ -6,6 +6,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false)
   const [question, setQuestion] = useState(null)
   const [questionCount, setQuestionCount] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const totalQuestion = 10
 
@@ -14,9 +15,14 @@ function App() {
   }
 
   async function fetchQuestion() {
-    const response = await fetch('https://nwtg-api.onrender.com/questions/random');
-    const data = await response.json()
-    setQuestion(data)
+    setQuestion(null)
+    setLoading(true)
+    setTimeout(async () => {
+      const response = await fetch('https://nwtg-api.onrender.com/questions/random');
+      const data = await response.json()
+      setQuestion(data)
+      setLoading(false)
+    }, 3000)
   }
 
   useEffect(() => {
@@ -75,7 +81,12 @@ function App() {
               >Restart Quiz</button>
             </>
             :
-            !question ? <p className="text-[#aabbff] text-md text-center">Loading...</p>
+            loading ?
+              <>
+                <div className="w-16 h-16 border-5 border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
+                <p className="text-[#aabbff] text-md text-center">Loading...</p>
+              </>
+
               :
               <>
                 <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest w-fit self-start">Score: {score}</p>
