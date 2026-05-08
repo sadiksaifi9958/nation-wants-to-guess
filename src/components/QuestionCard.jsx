@@ -14,7 +14,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
     return (
         <div className="flex flex-col">
             <div className="flex flex-col mb-4 p-4 bg-[#080830] border border-[#1e3aaa] rounded-lg w-full">
-                <h3 class="text-white text-center text-2xl font-bold p-3 rounded-xl p-4">{`Question No. ${questionNumber + 1} / ${totalQuestion}`}
+                <h3 class="text-white text-center text-2xl font-bold rounded-xl p-4">{`Question No. ${questionNumber + 1} / ${totalQuestion}`}
                 </h3>
                 <div className="h-4 bg-slate-700 rounded-xl w-lg m-3">
                     <div className="h-full bg-blue-500 rounded-xl transition-all duration-400 ease"
