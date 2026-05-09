@@ -47,7 +47,7 @@ function App() {
   const [selected, setSelected] = useState(null)
   const [timer, setTimer] = useState(30)
   const [timeOver, setTimeOver] = useState(false)
-  
+
 
   function handleCorrect() {
     const newScore = score + 1
@@ -59,7 +59,7 @@ function App() {
       setHighScore(newScore)
 
     }
-    setTimer(15)
+    setTimer(30)
     setAnsweredInTime(false)
   }
 
@@ -99,19 +99,19 @@ function App() {
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center">
         {!gameStarted ?
           <Start
-          onStart={onStart}
+            onStart={onStart}
           />
           :
           quizover ?
             <QuizOver
-            score={score} 
-            setScore={setScore} 
-            fetchQuestion={fetchQuestion} 
-            setQuizover={setQuizover} 
-            setQuestionCount={setQuestionCount} 
-            totalQuestion={totalQuestion} 
-            highScore={highScore}
-            setSelected={setSelected}
+              score={score}
+              setScore={setScore}
+              fetchQuestion={fetchQuestion}
+              setQuizover={setQuizover}
+              setQuestionCount={setQuestionCount}
+              totalQuestion={totalQuestion}
+              highScore={highScore}
+              setSelected={setSelected}
             />
             :
             loading ?
@@ -123,16 +123,16 @@ function App() {
               :
               timeOver ?
                 <TimeOver
-                score={score}
-                highScore={highScore} 
-                totalQuestion={totalQuestion} 
-                setScore={setScore}
-                fetchQuestion={fetchQuestion}
-                setQuizover={setQuizover}
-                setSelected={setSelected}
-                setQuestionCount={setQuestionCount} 
-                setTimeOver={setTimeOver}
-                setTimer={setTimer}
+                  score={score}
+                  highScore={highScore}
+                  totalQuestion={totalQuestion}
+                  setScore={setScore}
+                  fetchQuestion={fetchQuestion}
+                  setQuizover={setQuizover}
+                  setSelected={setSelected}
+                  setQuestionCount={setQuestionCount}
+                  setTimeOver={setTimeOver}
+                  setTimer={setTimer}
                 />
                 :
                 <>
