@@ -34,7 +34,7 @@ function App() {
       const data = await response.json()
       setQuestion(data)
       setLoading(false)
-    }, 3000)
+    }, 2000)
     setAnsweredInTime(false)
   }
 
