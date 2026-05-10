@@ -96,9 +96,9 @@ function App() {
 
   return (
     <div className="min-h-screen w-full bg-[#050518] relative overflow-hidden">
-      <div className="w-[500px] h-[500px] bg-[#2255ff] blur-[160px] opacity-20 absolute -top-40 -left-40 z-0 pointer-events-none"></div>
-      <div className="w-[400px] h-[400px] bg-[#7c3aed] blur-[160px] opacity-15 absolute -bottom-32 -right-32 z-0 pointer-events-none"></div>
-      <div className="w-[300px] h-[300px] bg-[#2255ff] blur-[180px] opacity-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"></div>
+      <div className="w-125 h-125 bg-[#2255ff] blur-[160px] opacity-20 absolute -top-40 -left-40 z-0 pointer-events-none"></div>
+      <div className="w-100 h-100 bg-[#7c3aed] blur-[160px] opacity-15 absolute -bottom-32 -right-32 z-0 pointer-events-none"></div>
+      <div className="w-75 h-75 bg-[#2255ff] blur-[180px] opacity-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"></div>
 
       <h1 className="text-white text-3xl font-bold text-center tracking-widest pt-5 z-10">Nation Wants To Guess</h1>
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center z-10">
