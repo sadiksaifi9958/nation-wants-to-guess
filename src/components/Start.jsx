@@ -1,19 +1,42 @@
 function Start({ onStart }) {
   return (
-    <div className="p-5 rounded-2xl flex w-full flex-col items-center bg-white/[0.07] backdrop-blur-2xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.45)] relative overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:border before:border-white/10 before:pointer-events-none">
-      <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-white/10 to-transparent pointer-events-none"></div>
-      <h2 className="text-center text-gray-100 text-xl font-semibold p-4 mb-4 leading-9 max-w-162.5 w-130">Inspired by the comedy quiz show 'Nation Wants To Guess' by comedian Gursimran Khamba, available on YouTube. All questions are based on the show.</h2>
-      <ul className="flex flex-col items-start gap-3 m-6 mt-4 text-gray-200 space-y-1 pl-5 list-disc self-start">
-        <li className="text-md marker:text-blue-400">10 exciting quiz rounds</li>
-        <li className="text-md marker:text-blue-400">Earn points for every correct answer</li>
-        <li className="text-md marker:text-blue-400">One wrong answer ends the game</li>
-      </ul>
-      <button
-        className="w-full bg-[#1133cc] text-white py-2 px-2 rounded-lg tracking-widest cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_18px_rgba(37,99,235,0.35)]  text-xl transition-all duration-300"
-        onClick={onStart}
-      >Start Quiz</button>
-    </div>
+    <div className="flex flex-col gap-0 items-center">
+      <p className="text-[#5a4aee] bg-[#0a0a1a] border border-[#2a2a5a] uppercase font-jetbrains rounded-full text-xs tracking-[0.25em] py-1.5 px-4 font-jetbrains">Comedy Quiz Show</p>
 
+      <div className="bg-[#08081a] border border-[#1e1e42] rounded-2xl flex flex-col items-center mt-6 overflow-hidden">
+        <div className="h-0.5 bg-linear-to-r from-[#7b61ff] via-[#a78bfa] to-[#4c44ee] w-full"></div>
+
+        <div className="p-7">
+          <p className="text-[#c0b8ff] text-center text-base leading-relaxed mb-5 font-medium">Inspired by the comedy quiz show <span className="text-white font-semibold">Nation Wants To Guess</span> by comedian Gursimran Khamba, available on YouTube. All questions are based on the show.</p>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="flex-1 h-px bg-[#1a1a35]"></div>
+            <span className="font-jetbrains text-[#3a3a70] text-xs tracking-widest uppercase leading-relaxed">How to play</span>
+            <div className="flex-1 h-px bg-[#1a1a35]"></div>
+          </div>
+
+          <ul className=" flex flex-col gap-4">
+            {[
+              { text: "10 exciting quiz rounds" },
+              { text: "Earn one point for every correct answer" },
+              { text: "One wrong answer ends the game instantly" },
+            ].map((rule, i) => (
+              <li key={i} className="text-[#c0b8ff] text-sm font-medium leading-relaxed px-3 py-2.5 rounded-xl bg-[#0d0d22] border border-[#1a1a35] marker:text-[#c0b8ff]-400 flex gap-3 items-center">
+                <span className="text-xs">◆</span>
+                <span>{rule.text}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-[#9a8cc0] text-center text-sm border border-[#1a1a35] bg-[#0a0820] leading-relaxed rounded-xl px-3 py-3 my-8 font-jetbrains">30 seconds per question</p>
+
+          <button
+            className="w-full bg-[#5a4aee] text-white py-3 px-2 rounded-lg tracking-widest cursor-pointer active:scale-[0.98] hover:bg-[#6b5bff] active:bg-[#4a3add] font-bold text-md transition-all duration-300 uppercase font-jetbrains"
+            onClick={onStart}
+          >Start Quiz</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
