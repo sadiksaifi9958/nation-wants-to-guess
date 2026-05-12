@@ -100,8 +100,13 @@ function App() {
       <div className="w-100 h-100 bg-[#7c3aed] blur-[160px] opacity-15 absolute -bottom-32 -right-32 z-0 pointer-events-none"></div>
       <div className="w-75 h-75 bg-[#2255ff] blur-[180px] opacity-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"></div>
 
-      <h1 className="text-white text-3xl font-bold text-center tracking-widest pt-5 z-10">Nation Wants To Guess</h1>
+      <header className="mt-5">
+        <p className="text-[#c0b8ff] text-md text-center tracking-[0.2em] font-semibold font-jetbrains">Quiz Show</p>
+        <h1 className="text-[#f0eeff] text-2xl font-bold text-center tracking-[0.20em] pt-5 z-10 font-jetbrains">Nation Wants To Guess</h1>
+        <div className="h-px bg-gradient-to-r from-transparent via-[#c0b8ff] to-transparent mx-auto my-5 w-40"></div>
+      </header>
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center z-10">
+
         {!gameStarted ?
           <Start
             onStart={onStart}
