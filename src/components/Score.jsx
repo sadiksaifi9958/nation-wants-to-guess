@@ -2,13 +2,12 @@ function Score({ score, highScore, timer, selected }) {
     return (
         <div className="flex w-full justify-between items-center">
 
-            <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest">Score: {score}</p>
+            <p className="bg-[#08081a] border border-[#1e1e42] rounded-xl px-5 py-2 text-[#5a4aee] text-[10px] tracking-widest uppercase font-jetbrains flex flex-col items-center">Score <span className="text-xl text-white">{score}</span></p>
 
-            <p className={`border  rounded-full px-4 py-1  text-md font-bold tracking--widest self-start
-            ${timer <= 7 && selected === null ? 'bg-[#1a0000] text-[#ff5555] border-[#ff2222] animate-pulse' : timer <= 16 ? 'bg-[#1a1200] text-[#ffbb33] border-[#ff8800]' : 'bg-[#0d1040] border-[#2233aa] text-[#aabbff]'}`}>Remaining Time: {timer}s
-            </p>
-            <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-sm font-bold tracking--widest">High Score: {highScore}</p>
-        </div >
+            <p className={`border rounded-xl px-42 py-3  text-xs font-bold tracking-widest self-start flex flex-col items-center uppercase font-jetbrains ${timer <= 7 && selected === null ? 'bg-[#1a0008] text-[#ff3366] border-[#aa0033] animate-pulse' : timer <= 16 ? 'bg-[#140900] text-[#ff9500] border-[#aa5500]' : 'bg-[#08081a] border-[#2a2a5a] text-[#2a2a5a]'}`}>Time <span className="text-white lowercase text-2xl leading-tight">{timer}s</span></p>
+
+            <p className="bg-[#08081a] border border-[#1e1e42] rounded-xl px-5 py-2 text-[#5a4aee] text-[10px] tracking-widest uppercase font-jetbrains flex flex-col items-center">Best <span className="text-xl text-white">{highScore}</span></p>
+        </div>
     )
 }
 
