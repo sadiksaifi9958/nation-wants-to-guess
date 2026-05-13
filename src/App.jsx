@@ -88,8 +88,6 @@ function App() {
         return () => clearInterval(interval)
       }
     }
-
-
   }, [gameStarted, loading, question, quizover, answeredInTime])
 
 
