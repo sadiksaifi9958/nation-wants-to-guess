@@ -18,15 +18,24 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="flex flex-col mb-4 p-4 bg-[#080830] border border-[#1e3aaa] rounded-xl w-full">
-                <h3 className="text-white text-center text-2xl font-bold rounded-xl p-4">{`Question No. ${questionNumber + 1} / ${totalQuestion}`}
-                </h3>
-                <div className="h-4 bg-slate-700 rounded-xl w-lg m-3">
-                    <div className="h-full bg-blue-500 rounded-xl transition-all duration-400 ease"
-                        style={{ width: `${((questionNumber + 1) / totalQuestion) * 100}%` }}
-                    ></div>
+            <div className="flex flex-col mb-4 bg-[#0a0a1a] border border-[#2a2a5a] rounded-2xl w-full overflow-hidden">
+                <div className="bg-linear-to-r from-[#7b61ff] via-[#a78bfa] to-[#4c44ee] w-full h-0.5 rounded-full"></div>
+                <div className="flex justify-between items-center px-5  pt-5 pb-2">
+                    <div className="text-[#5a4aee] text-xs font-jetbrains uppercase tracking-widest">Question</div>
+                    <div className="text-white text-xs font-jetbrains">{questionNumber + 1}
+                        <span className="text-[#3a3a6a]">{` / ${totalQuestion}`}</span>
+                    </div>
+                </div>
+
+                <div className="px-5 pb-5">
+                    <div className="h-1.5 bg-[#14143a] rounded-full overflow-hidden">
+                        <div className="h-full bg-linear-to-r from-[#5a4aee] to-[#a78bfa] rounded-xl transition-all duration-400 ease"
+                            style={{ width: `${((questionNumber + 1) / totalQuestion) * 100}%` }}
+                        ></div>
+                    </div>
                 </div>
             </div>
+            
             <h2 className="text-white text-lg font-semibold leading-relaxed bg-[#080830] border border-[#1e3aaa] rounded-xl p-4 mb-4"> {question}</h2>
             <ul>
                 {options.map((option, index) => (

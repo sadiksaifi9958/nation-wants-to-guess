@@ -72,23 +72,23 @@ function App() {
     setTimer(30)
   }
 
-  useEffect(() => {
-    if (!answeredInTime) {
-      if (gameStarted && !loading && question && !quizover) {
-        const interval = setInterval(() => {
-          setTimer((previousTimer) => {
-            if (previousTimer === 0) {
-              setTimeOver(true)
-              clearInterval(interval)
-              return 0
-            }
-            return previousTimer - 1
-          })
-        }, 1000)
-        return () => clearInterval(interval)
-      }
-    }
-  }, [gameStarted, loading, question, quizover, answeredInTime])
+  // useEffect(() => {
+  //   if (!answeredInTime) {
+  //     if (gameStarted && !loading && question && !quizover) {
+  //       const interval = setInterval(() => {
+  //         setTimer((previousTimer) => {
+  //           if (previousTimer === 0) {
+  //             setTimeOver(true)
+  //             clearInterval(interval)
+  //             return 0
+  //           }
+  //           return previousTimer - 1
+  //         })
+  //       }, 1000)
+  //       return () => clearInterval(interval)
+  //     }
+  //   }
+  // }, [gameStarted, loading, question, quizover, answeredInTime])
 
 
 
