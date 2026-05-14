@@ -35,8 +35,8 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                     </div>
                 </div>
             </div>
-            
-            <h2 className="text-white text-lg font-semibold leading-relaxed bg-[#080830] border border-[#1e3aaa] rounded-xl p-4 mb-4"> {question}</h2>
+
+            <h2 className="text-white text-lg font-semibold leading-relaxed bg-[#08081a] border border-[#2a2a5a] rounded-2xl p-4 mb-4"> {question}</h2>
             <ul>
                 {options.map((option, index) => (
                     <motion.button
@@ -48,12 +48,12 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                             setAnsweredInTime(true)
                         }}
                         disabled={selected !== null}
-                        className={`w-full flex items-start text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 hover:scale-105 active:scale-95 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}
+                        className={`w-full flex items-center text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 hover:border-[#5a4aee] hover:text-white active:scale-95 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#08081a] border-[#2a2a5a] text-[#d8d4ff]'}`}
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: (index + 1) * 0.4, duration: 0.4 }}
                     >
-                        <span className={`rounded-full px-2 w-6 h-6 text-xs font-bold border min-height-16 flex shrink-0 items-center justify-center ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#080830] border-[#1e3aaa] text-white'}`}>{optionLabels[index]}</span>
+                        <span className={`rounded-lg px-2.5 py-1.5 text-xs font-bold border min-height-16 flex shrink-0 items-center justify-center font-jetbrains ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#08081a] border-[#2a2a5a] text-[#5a4aee]'}`}>{optionLabels[index]}</span>
                         {option}
                     </motion.button>))
                 }
@@ -63,8 +63,8 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
             <button
                 onClick={() => { selected === answer ? onCorrect() : onWrong() }}
                 disabled={selected === null}
-                className="w-full bg-[#1133cc] active:bg-[#0a2299] text-white font-semibold py-2 px-4 rounded-lg tracking-widest cursor-pointer disabled:opacity-50 text-sm"
-            >Next Question</button>
+                className="w-full bg-[#5a4aee] active:scale-[0.98] active:bg-[#4a3add] text-white font-semibold py-3 px-2 rounded-lg tracking-widest cursor-pointer disabled:opacity-50 text-sm font-jetbrains uppercase"
+            >Next Question →</button>
         </motion.div >
     )
 }
