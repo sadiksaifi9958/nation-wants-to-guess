@@ -1,14 +1,17 @@
 import { motion } from "framer-motion"
 function QuestionCard({ question, options, answer, onCorrect, onWrong, selected, setSelected, questionNumber, totalQuestion, answeredInTime, setAnsweredInTime }) {
-    const optionColors = [
-        'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]',
-        'bg-[#1a0e00] text-[#ffaa44] border-[#cc6600]',
-        'bg-[#00081a] text-[#66aaff] border-[#0055cc]',
-        'bg-[#001a16] text-[#44ddbb] border-[#008866]',
-        'bg-[#0f001a] text-[#cc88ff] border-[#7700cc]',
-        'bg-[#1a1000] text-[#ffdd44] border-[#aa8800]',
-        'bg-[#001a1a] text-[#44ffee] border-[#008888]',
-    ]
+    function OptionStyle(option) {
+        if (!selected) {
+            return 'bg-[#09091a] border-[#22224a] text-[#d8d4ff] hover:border-[#5a4aee] hover:bg-[#0d0d22] hover:text-white'
+        }
+        if (option === answer) {
+            return 'bg-[#00120a] border-[#00aa55] text-[#00e887] option-glow-correct'
+        }
+        if (option === selected) {
+            return 'bg-[#150008] border-[#aa0033] text-[#ff4466] option-glow-wrong'
+        }
+        return 'bg-[#09091a] border-[#16163a] text-[#3a3a6a] opacity-50'
+    }
 
     const optionLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 
@@ -48,17 +51,17 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                             setAnsweredInTime(true)
                         }}
                         disabled={selected !== null}
-                        className={`w-full flex items-center text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 hover:border-[#5a4aee] hover:text-white active:scale-95 ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#08081a] border-[#2a2a5a] text-[#d8d4ff]'}`}
+                        className={`w-full flex items-center text-left cursor-pointer gap-3 p-3 rounded-lg border text-sm font-semibold mb-4 ${OptionStyle(option)}`}
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: (index + 1) * 0.4, duration: 0.4 }}
                     >
-                        <span className={`rounded-lg px-2.5 py-1.5 text-xs font-bold border min-height-16 flex shrink-0 items-center justify-center font-jetbrains ${selected ? (option === answer ? 'bg-[#001a16] text-[#44ddbb] border-[#008866]' : option === selected ? 'bg-[#1a0505] text-[#ff6b6b] border-[#cc2200]' : 'bg-[#080830] border-[#1e3aaa] text-white') : 'bg-[#08081a] border-[#2a2a5a] text-[#5a4aee]'}`}>{optionLabels[index]}</span>
+                        <span className={`px-2 py-1 rounded-lg border text-xs font-semibold ${OptionStyle(option)}`}>{optionLabels[index]}</span>
                         {option}
                     </motion.button>))
                 }
             </ul>
-            {selected && selected === answer ? <p className="text-center bg-[#001a00] text-[#44ff88] font-semibold py-2 px-4 rounded-lg mb-2">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#1a0000] text-[#ff6666] font-semibold py-2 px-4 rounded-lg mb-2">That's a wrong answer.</p> : null}
+            {selected && selected === answer ? <p className="text-center bg-[#00120a] border border-[#00aa55] text-[#00e887] font-semibold py-2 px-4 rounded-lg mb-2">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#150008] text-[#ff4466] border border-[#aa0033] font-semibold py-2 px-4 rounded-lg mb-2">That's a wrong answer.</p> : null}
 
             <button
                 onClick={() => { selected === answer ? onCorrect() : onWrong() }}
