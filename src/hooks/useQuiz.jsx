@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { TOTAL_QUESTION, TIMER_DURATION, API_URL } from '../constants/index'
 
 
 export default function useQuiz() {
@@ -14,7 +15,7 @@ export default function useQuiz() {
             return 0
     })
 
-    const totalQuestion = 10
+    const totalQuestion = TOTAL_QUESTION
 
     function onStart() {
         setGameStarted(true)
@@ -39,7 +40,7 @@ export default function useQuiz() {
     const [score, setScore] = useState(0)
     const [quizover, setQuizover] = useState(false)
     const [selected, setSelected] = useState(null)
-    const [timer, setTimer] = useState(30)
+    const [timer, setTimer] = useState(TIMER_DURATION)
     const [timeOver, setTimeOver] = useState(false)
 
 
@@ -53,7 +54,7 @@ export default function useQuiz() {
             setHighScore(newScore)
 
         }
-        setTimer(30)
+        setTimer(TIMER_DURATION)
         setAnsweredInTime(false)
     }
 
@@ -63,7 +64,7 @@ export default function useQuiz() {
 
     function handleWrong() {
         setQuizover(true)
-        setTimer(30)
+        setTimer(TIMER_DURATION)
     }
 
     useEffect(() => {
