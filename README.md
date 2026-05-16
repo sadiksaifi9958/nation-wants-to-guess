@@ -2,7 +2,7 @@
 
 A quiz web app based on the comedy show by Gursimran Khamba.
 
-**Live demo:** [your-url.vercel.app](https://your-url.vercel.app)
+**Live demo:** [nation-wants-to-guess-red.vercel.app](https://nation-wants-to-guess-red.vercel.app)
 
 ## Features
 - Random questions fetched from a live API
