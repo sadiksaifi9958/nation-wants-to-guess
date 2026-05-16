@@ -104,66 +104,66 @@ function App() {
         <div className="h-px bg-linear-to-r from-transparent via-[#5a4aee] to-transparent mx-auto mt-3 mb-2 w-40"></div>
       </header>
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-4 items-center z-10">
-
-        {!gameStarted ?
-          <Start
-            onStart={onStart}
-          />
-          :
-          quizover ?
-            <QuizOver
-              score={score}
-              setScore={setScore}
-              fetchQuestion={fetchQuestion}
-              setQuizover={setQuizover}
-              setQuestionCount={setQuestionCount}
-              totalQuestion={totalQuestion}
-              highScore={highScore}
-              setSelected={setSelected}
+        {
+          !gameStarted ?
+            <Start
+              onStart={onStart}
             />
             :
-            loading ?
-              <>
-                <div className="w-16 h-16 border-5 border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
-                <p className="text-[#aabbff] text-md text-center">Loading...</p>
-              </>
-
+            quizover ?
+              <QuizOver
+                score={score}
+                setScore={setScore}
+                fetchQuestion={fetchQuestion}
+                setQuizover={setQuizover}
+                setQuestionCount={setQuestionCount}
+                totalQuestion={totalQuestion}
+                highScore={highScore}
+                setSelected={setSelected}
+              />
               :
-              timeOver ?
-                <TimeOver
-                  score={score}
-                  highScore={highScore}
-                  totalQuestion={totalQuestion}
-                  setScore={setScore}
-                  fetchQuestion={fetchQuestion}
-                  setQuizover={setQuizover}
-                  setSelected={setSelected}
-                  setQuestionCount={setQuestionCount}
-                  setTimeOver={setTimeOver}
-                  setTimer={setTimer}
-                />
-                :
+              loading ?
                 <>
-                  <Score
+                  <div className="w-16 h-16 border-5 border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
+                  <p className="text-[#aabbff] text-md text-center">Loading...</p>
+                </>
+
+                :
+                timeOver ?
+                  <TimeOver
                     score={score}
                     highScore={highScore}
-                    timer={timer}
-                    selected={selected}
-                  />
-                  <QuestionCard
-                    question={question.question}
-                    options={question.options}
-                    answer={question.answer}
-                    onCorrect={handleCorrect}
-                    onWrong={handleWrong}
-                    selected={selected}
-                    setSelected={setSelected}
-                    questionNumber={questionCount}
                     totalQuestion={totalQuestion}
-                    answeredInTime={answeredInTime}
-                    setAnsweredInTime={setAnsweredInTime}
+                    setScore={setScore}
+                    fetchQuestion={fetchQuestion}
+                    setQuizover={setQuizover}
+                    setSelected={setSelected}
+                    setQuestionCount={setQuestionCount}
+                    setTimeOver={setTimeOver}
+                    setTimer={setTimer}
                   />
-                </>}
+                  :
+                  <>
+                    <Score
+                      score={score}
+                      highScore={highScore}
+                      timer={timer}
+                      selected={selected}
+                    />
+                    <QuestionCard
+                      question={question.question}
+                      options={question.options}
+                      answer={question.answer}
+                      onCorrect={handleCorrect}
+                      onWrong={handleWrong}
+                      selected={selected}
+                      setSelected={setSelected}
+                      questionNumber={questionCount}
+                      totalQuestion={totalQuestion}
+                      answeredInTime={answeredInTime}
+                      setAnsweredInTime={setAnsweredInTime}
+                    />
+                  </>}
       </div >
     </div >
   )

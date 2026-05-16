@@ -1,23 +1,40 @@
-function QuizOver({score, setScore, fetchQuestion, setQuizover, setQuestionCount, totalQuestion, highScore, setSelected}){
-    return(
-        <div className="flex flex-col items-center w-full gap-4">
-            <p className="text-center text-white text-2xl font-bold bg-[#0d1040] border border-[#2233aa] rounded-lg p-4 mb-4">Quiz Over! Your Score is: {score}/ {totalQuestion}</p>
-              {score <= 3 ? (<p className="text-white">Better luck next time!</p>)
-                : score <= 7 ? (<p className="text-white">Nice try!</p>) : (<p className="text-white">You are a true Nation Wants To Guess fan</p>)}
+function QuizOver({ score, setScore, fetchQuestion, setQuizover, setQuestionCount, totalQuestion, highScore, setSelected }) {
 
-              <p className="bg-[#0d1040]  border border-[#2233aa] rounded-full px-4 py-1 text-[#aabbff] text-md font-bold tracking--widest self-center">High Score: {highScore}</p>
-              <button
-                className="w-full bg-[#1133cc] hover:bg-[#0a2299] text-white font-bold py-2 px-2 rounded-lg tracking-widest cursor-pointer active:scale-90"
-                onClick={() => {
-                  setScore(0);
-                  fetchQuestion()
-                  setQuizover(false)
-                  setSelected(null)
-                  setQuestionCount(0)
-                }}
-              >Restart Quiz</button>
+  const FeedbackStyle =
+    score <= 3 ? { color: 'text-[#ff4466]', bg: 'bg-[#150008] border-[#aa0033]', text: "Better luck next time!" } : score <= 7 ? { text: 'text-[#ff9500]', bg: 'bg-[#140900]  border-[#aa5500]', text: 'Nice try!' } : { text: 'text-[#00e887]', bg: 'bg-[#00120a] border-[#00aa55]', text: 'You are a true fan' }
+
+  return (
+    <div className="flex flex-col items-center w-full gap-4">
+      <div className="bg-[#08081a] border border-[#1e1e42] rounded-xl flex flex-col items-center w-full gap-2 overflow-hidden">
+        <div className="h-[2px] w-full rounded-xl bg-linear-to-r from-[#aa0033] via-[#ff4466] to-[#7b61ff]"></div>
+        <div className="h-18 w-18 rounded-xl border border-[#1e1e42] bg-[#0d0d22] text-3xl flex items-center justify-center m-5">🎯</div>
+        <div className="text-center text-[#5a4aee] text-xs font-bold font-jetbrains tracking-widest">Quiz Over! </div>
+        <div className="text-center text-[#9a8cee] text-lg font-bold">Your Final Score</div>
+        <div className="flex items-end gap-1 mt-2">
+          <div className="text-white text-7xl font-jetbrains">{score}</div>
+          <div className="text-[#3a3a6a] text-3xl font-jetbrains">{`/ ${totalQuestion}`}</div>
         </div>
-    )
+
+        <div className={`rounded-full px-3 py-2 mb-8 border mt-4 font-jetbrains ${FeedbackStyle.color} ${FeedbackStyle.bg}`}>{FeedbackStyle.text}</div>
+      </div>
+
+      <div className="bg-[#08081a]  border border-[#1e1e42] rounded-xl px-4 py-4  w-full  justify-center flex gap-2 items-center">
+        <span className="text-base">🏆</span>
+        <span className="text-[#5a4aee] text-sm font-bold tracking--widest uppercase font-jetbrains">Best</span>
+        <span className="text-white font-jetbrains text-xl">{highScore}</span>
+      </div>
+      <button
+        className="w-full bg-[#5a4aee] active:scale-[0.98] active:bg-[#4a3add] text-white font-semibold py-3 px-2 rounded-xl tracking-widest cursor-pointer text-sm font-jetbrains uppercase"
+        onClick={() => {
+          setScore(0);
+          fetchQuestion()
+          setQuizover(false)
+          setSelected(null)
+          setQuestionCount(0)
+        }}
+      >Restart Quiz</button>
+    </div>
+  )
 }
 
 export default QuizOver

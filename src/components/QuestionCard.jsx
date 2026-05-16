@@ -16,7 +16,7 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
     const optionLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 
     return (
-        <motion.div className="flex flex-col"
+        <motion.div className="flex flex-col w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
