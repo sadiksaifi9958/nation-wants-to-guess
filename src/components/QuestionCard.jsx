@@ -55,13 +55,16 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: (index + 1) * 0.4, duration: 0.4 }}
+                        aria-label={`${optionLabels[index]}: ${option}`}
                     >
                         <span className={`px-2 py-1 rounded-lg border text-xs font-semibold ${OptionStyle(option)}`}>{optionLabels[index]}</span>
                         {option}
                     </motion.button>))
                 }
             </ul>
-            {selected && selected === answer ? <p className="text-center bg-[#00120a] border border-[#00aa55] text-[#00e887] font-semibold py-2 px-4 rounded-lg mb-2">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#150008] text-[#ff4466] border border-[#aa0033] font-semibold py-2 px-4 rounded-lg mb-2">That's a wrong answer.</p> : null}
+            {selected && selected === answer ? <p className="text-center bg-[#00120a] border border-[#00aa55] text-[#00e887] font-semibold py-2 px-4 rounded-lg mb-2 role"
+            role="status">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#150008] text-[#ff4466] border border-[#aa0033] font-semibold py-2 px-4 rounded-lg mb-2"
+            role="status">That's a wrong answer.</p> : null}
 
             <button
                 onClick={() => { selected === answer ? onCorrect() : onWrong() }}
