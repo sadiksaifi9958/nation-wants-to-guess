@@ -1,4 +1,4 @@
-function TimeOver({ score, setScore, fetchQuestion, setQuizover, setQuestionCount, totalQuestion, highScore, setSelected }) {
+function TimeOver({ score, setScore, fetchQuestion, setTimeOver, setQuestionCount, totalQuestion, highScore, setSelected, setTimer }) {
 
   const FeedbackStyle =
     score <= 3 ? { color: 'text-[#ff4466]', bg: 'bg-[#150008] border-[#aa0033]', text: "Better luck next time!" } : score <= 7 ? { text: 'text-[#ff9500]', bg: 'bg-[#140900]  border-[#aa5500]', text: 'Nice try!' } : { text: 'text-[#00e887]', bg: 'bg-[#00120a] border-[#00aa55]', text: 'You are a true fan' }
@@ -28,9 +28,10 @@ function TimeOver({ score, setScore, fetchQuestion, setQuizover, setQuestionCoun
         onClick={() => {
           setScore(0);
           fetchQuestion()
-          setQuizover(false)
+          setTimeOver(false)
           setSelected(null)
           setQuestionCount(0)
+          setTimer(30)
         }}
       >Try Again</button>
     </div>
