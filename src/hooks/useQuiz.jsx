@@ -21,14 +21,24 @@ export default function useQuiz() {
         setGameStarted(true)
     }
 
+    const [error, setError] = useState(null)
+
     async function fetchQuestion() {
         setQuestion(null)
         setLoading(true)
+        setError(null)
         setTimeout(async () => {
-            const response = await fetch('https://nwtg-api.onrender.com/questions/random');
-            const data = await response.json()
-            setQuestion(data)
-            setLoading(false)
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('API error')
+                const data = await response.json()
+                setQuestion(data)
+                setLoading(false)
+            } catch{
+                setError('Something went wrong. Please try again.')
+                setLoading(false)
+            }
+            
         }, 2000)
         setAnsweredInTime(false)
     }
@@ -86,28 +96,29 @@ export default function useQuiz() {
     }, [gameStarted, loading, question, quizover, answeredInTime])
 
     return {
-    gameStarted,
-    question,
-    questionCount,
-    loading,
-    answeredInTime,
-    highScore,
-    totalQuestion,
-    score,
-    setScore,
-    quizover,
-    setQuizover,
-    selected,
-    setSelected,
-    timer,
-    setTimer,
-    timeOver,
-    setTimeOver,
-    fetchQuestion,
-    handleCorrect,
-    handleWrong,
-    onStart,
-    setAnsweredInTime,
-    setQuestionCount,
-}
+        gameStarted,
+        question,
+        questionCount,
+        loading,
+        answeredInTime,
+        highScore,
+        totalQuestion,
+        score,
+        setScore,
+        quizover,
+        setQuizover,
+        selected,
+        setSelected,
+        timer,
+        setTimer,
+        timeOver,
+        setTimeOver,
+        fetchQuestion,
+        handleCorrect,
+        handleWrong,
+        onStart,
+        setAnsweredInTime,
+        setQuestionCount,
+        error,
+    }
 }
