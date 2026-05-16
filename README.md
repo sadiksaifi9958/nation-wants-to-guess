@@ -19,5 +19,7 @@ A quiz web app based on the comedy show by Gursimran Khamba.
 - Framer Motion
 
 ## Run locally
+```
 npm install
 npm run dev
+```
