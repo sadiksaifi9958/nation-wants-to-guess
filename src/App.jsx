@@ -34,7 +34,7 @@ function App() {
       const data = await response.json()
       setQuestion(data)
       setLoading(false)
-    }, 2000)
+    }, 5000)
     setAnsweredInTime(false)
   }
 
@@ -72,23 +72,23 @@ function App() {
     setTimer(30)
   }
 
-  // useEffect(() => {
-  //   if (!answeredInTime) {
-  //     if (gameStarted && !loading && question && !quizover) {
-  //       const interval = setInterval(() => {
-  //         setTimer((previousTimer) => {
-  //           if (previousTimer === 0) {
-  //             setTimeOver(true)
-  //             clearInterval(interval)
-  //             return 0
-  //           }
-  //           return previousTimer - 1
-  //         })
-  //       }, 1000)
-  //       return () => clearInterval(interval)
-  //     }
-  //   }
-  // }, [gameStarted, loading, question, quizover, answeredInTime])
+  useEffect(() => {
+    if (!answeredInTime) {
+      if (gameStarted && !loading && question && !quizover) {
+        const interval = setInterval(() => {
+          setTimer((previousTimer) => {
+            if (previousTimer === 0) {
+              setTimeOver(true)
+              clearInterval(interval)
+              return 0
+            }
+            return previousTimer - 1
+          })
+        }, 1000)
+        return () => clearInterval(interval)
+      }
+    }
+  }, [gameStarted, loading, question, quizover, answeredInTime])
 
 
 
@@ -124,8 +124,8 @@ function App() {
               :
               loading ?
                 <>
-                  <div className="w-16 h-16 border-5 border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
-                  <p className="text-[#aabbff] text-md text-center">Loading...</p>
+                  <div className="w-16 h-16 border-3 border-[#1e1e42] border-t-[#5a4aee] rounded-full animate-spin"></div>
+                  <p className="text-[#5a4aee] text-sm text-center font-jetbrains tracking-widest">Fetching Question...</p>
                 </>
 
                 :
