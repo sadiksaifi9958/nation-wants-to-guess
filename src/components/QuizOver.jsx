@@ -15,7 +15,7 @@ function QuizOver({ score, setScore, fetchQuestion, setQuizover, setQuestionCoun
           <div className="text-[#3a3a6a] text-3xl font-jetbrains">{`/ ${totalQuestion}`}</div>
         </div>
 
-        <div className={`rounded-full px-3 py-2 mb-8 border mt-4 font-jetbrains ${FeedbackStyle.color} ${FeedbackStyle.bg}`}>{FeedbackStyle.text}</div>
+        <div className={`rounded-full px-3 py-2 mb-8 border mt-4 font-jetbrains text-sm ${FeedbackStyle.color} ${FeedbackStyle.bg}`}>{FeedbackStyle.text}</div>
       </div>
 
       <div className="bg-[#08081a]  border border-[#1e1e42] rounded-xl px-4 py-4  w-full  justify-center flex gap-2 items-center">
