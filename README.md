@@ -4,6 +4,8 @@ A quiz web app based on the comedy show by Gursimran Khamba.
 
 **Live demo:** [nwtg-quiz.vercel.app](https://nwtg-quiz.vercel.app)
 
+![Nation Wants To Guess](public/screenshot.png)
+
 ## Features
 - Random questions fetched from a live API
 - 30 second countdown timer per question
