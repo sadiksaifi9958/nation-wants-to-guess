@@ -22,6 +22,8 @@ A quiz web app based on the comedy show by Gursimran Khamba.
 
 ## Run locally
 ```
+git clone https://github.com/sadiksaifi9958/nation-wants-to-guess.git
+cd nation-wants-to-guess
 npm install
 npm run dev
 ```

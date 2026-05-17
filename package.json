@@ -1,6 +1,6 @@
 {
-  "name": "quizhappens",
-  "homepage": "https://sadiksaifi9958.github.io/nation-wants-to-guess/",
+  "name": "nation-wants-to-guess",
+  "homepage": "https://nwtg-quiz.vercel.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
