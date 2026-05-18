@@ -4,7 +4,7 @@ function Score({ score, highScore, timer, selected }) {
     const timerAudio = new Audio(timerSound)
     timerAudio.volume = 0.2
 
-    if(timer == 7 && selected == null){
+    if(timer == 7 && selected === null){
         timerAudio.play()
     }
 
