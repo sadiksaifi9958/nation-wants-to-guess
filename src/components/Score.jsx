@@ -8,6 +8,10 @@ function Score({ score, highScore, timer, selected }) {
         timerAudio.play()
     }
 
+    if(selected !== null){
+        timerAudio.pause()
+    }
+
     return (
         <div className="flex w-full justify-between items-center">
 
