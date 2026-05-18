@@ -1,4 +1,7 @@
 import { motion } from "framer-motion"
+import correctSound from '../Assets/sounds/correct.mp3'
+import wrongSound from '../Assets/sounds/wrong.mp3'
+
 function QuestionCard({ question, options, answer, onCorrect, onWrong, selected, setSelected, questionNumber, totalQuestion, answeredInTime, setAnsweredInTime }) {
     function OptionStyle(option) {
         if (!selected) {
@@ -14,6 +17,12 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
     }
 
     const optionLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
+
+    const correctAudio = new Audio(correctSound)
+    correctAudio.volume = 0.4
+
+    const wrongAudio = new Audio(wrongSound)
+    wrongAudio.volume = 0.4
 
     return (
         <motion.div className="flex flex-col w-full"
@@ -47,6 +56,11 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                         onClick={() => {
                             if (selected === null) {
                                 setSelected(option);
+                                if (option === answer) {
+                                    correctAudio.play()
+                                } else {
+                                    wrongAudio.play()
+                                }
                             }
                             setAnsweredInTime(true)
                         }}
@@ -63,8 +77,8 @@ function QuestionCard({ question, options, answer, onCorrect, onWrong, selected,
                 }
             </ul>
             {selected && selected === answer ? <p className="text-center bg-[#00120a] border border-[#00aa55] text-[#00e887] font-semibold py-2 px-4 rounded-lg mb-2 role"
-            role="status">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#150008] text-[#ff4466] border border-[#aa0033] font-semibold py-2 px-4 rounded-lg mb-2"
-            role="status">That's a wrong answer.</p> : null}
+                role="status">That's correct, You won!</p> : selected && selected !== answer ? <p className="text-center bg-[#150008] text-[#ff4466] border border-[#aa0033] font-semibold py-2 px-4 rounded-lg mb-2"
+                    role="status">That's a wrong answer.</p> : null}
 
             <button
                 onClick={() => { selected === answer ? onCorrect() : onWrong() }}

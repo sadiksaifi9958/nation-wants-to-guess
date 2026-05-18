@@ -1,4 +1,9 @@
+import clickSound from '../Assets/sounds/click.mp3'
+
 function Start({ onStart }) {
+  const clickAudio = new Audio(clickSound)
+  clickAudio.volume = 0.3
+
   return (
     <div className="flex flex-col gap-0 items-center">
       <p className="text-[#5a4aee] bg-[#0a0a1a] border border-[#2a2a5a] uppercase font-jetbrains rounded-full text-xs tracking-[0.25em] py-1.5 px-4 font-jetbrains">Comedy Quiz Show</p>
@@ -32,7 +37,10 @@ function Start({ onStart }) {
 
           <button
             className="w-full bg-[#5a4aee] text-white py-3 px-2 rounded-lg tracking-widest cursor-pointer active:scale-[0.98] hover:bg-[#6b5bff] active:bg-[#4a3add] font-bold text-md transition-all duration-300 uppercase font-jetbrains"
-            onClick={onStart}
+            onClick={()=>{
+              clickAudio.play()
+              onStart()
+            }}
           >Start Quiz</button>
         </div>
       </div>

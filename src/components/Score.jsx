@@ -1,4 +1,13 @@
+import timerSound from '../Assets/sounds/timer.wav'
 function Score({ score, highScore, timer, selected }) {
+
+    const timerAudio = new Audio(timerSound)
+    timerAudio.volume = 0.2
+
+    if(timer == 7 && selected == null){
+        timerAudio.play()
+    }
+
     return (
         <div className="flex w-full justify-between items-center">
 
